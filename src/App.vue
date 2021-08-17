@@ -1,5 +1,16 @@
 <template>
   <div id="app">
+    <vue-dropzone ref="imgDropzone" :options="dropzoneOptions" @vdropzone-complete="afterComplete">
+
+      <div v-if="images.lentgh > 0">
+        
+<div v-for="image in images" :key="image.src"> </div>
+<image :src="image"  
+         </div>
+
+
+
+    </vue-dropzone>
 
 </template>
 
