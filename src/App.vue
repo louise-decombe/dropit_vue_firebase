@@ -5,7 +5,7 @@
       <div v-if="images.lentgh > 0">
         
 <div v-for="image in images" :key="image.src"> </div>
-<image :src="image"  
+<image :src="image.src" />  
          </div>
 
 
@@ -48,11 +48,16 @@ methods: {
       }
 
       const storageRef = firebase.storage().ref; 
-      const imageref = storageRef.child('image/${imageName}.png')
+      const imageref = storageRef.child('image/${imageName}.png');
 
       await imageref.put(file, metadata);
 
-      const downloadUrl = await imageref.getDownloadUrl()
+      const downloadUrl = await imageref.getDownloadUrl();
+
+    this.images.push({
+      src: downloadUrl
+    });
+
       this.$refs.imgDropzone.removeFile(file);
 
     } catch (error) {
@@ -65,5 +70,18 @@ methods: {
 </script>
 
 <style>
+
+.img-div{
+
+display: flex;
+margin: 20px;
+
+
+}
+
+.img {
+  max-width: 250px;
+  margin: 50px;
+}
 
 </style>
