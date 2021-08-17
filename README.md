@@ -1,5 +1,8 @@
 # dropzone
 
+## Basic dropzone using v2dropzone library.
+
+
 ## Project setup
 ```
 npm install
