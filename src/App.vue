@@ -37,7 +37,12 @@ methods: {
       }
 
       const storageRef = firebase.storage().ref; 
-      const imageref = storageRef.child()
+      const imageref = storageRef.child('image/${imageName}.png')
+
+      await imageref.put(file, metadata);
+
+      const downloadUrl = await imageref.getDownloadUrl()
+      this.$refs.imgDropzone.removeFile(file);
 
     } catch (error) {
       console.log(error);
